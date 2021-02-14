@@ -1,6 +1,6 @@
 # Simple Hash
 
-## <strong style="color: red;">[Warning: I do not condone any illegal use using this tool. Any use of this tool shall be used under educational uses only or penetration testing.<br>Any Illegal use of this tool is the users responsibility and I do not account myself responsible!](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`</strong>
+## <strong style="color: red;">Warning: I do not condone any illegal use using this tool. Any use of this tool shall be used under educational uses only or penetration testing.<br>Any Illegal use of this tool is the users responsibility and I do not account myself responsible!</strong>
 
 ## Hey there
 This is a simple and self explanatory tool, but I"m gonna give brief explanation on it anyway!
