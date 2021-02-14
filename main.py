@@ -3,7 +3,7 @@ import hashlib
 
 
 def dict_attack():
-    type_att = input("Please enter the type of password hash <\"MD5, SHA256\" > >>>")
+    type_att = input("Please enter the type of password hash <\"MD5, SHA256\" > >>> ")
     type_att = type_att.upper()
     aloud_pass_types = ['MD5', 'SHA1', 'SHA224', 'SHA384', 'SHA256', 'SHA512']
 
@@ -52,8 +52,13 @@ def dict_attack():
 
 
 def encode():
-    type_en = input("Please enter the type of password hash <\"MD5, SHA256\" > >>>")
+    type_en = input("Please enter the type of password hash <\"MD5, SHA256\" > >>> ")
     type_en = type_en.upper()
+    aloud_pass_types = ['MD5', 'SHA1', 'SHA224', 'SHA384', 'SHA256', 'SHA512']
+
+    if type_en not in aloud_pass_types:
+        exit(f'''\n You can only use these hashes:
+{aloud_pass_types}''')
 
     password = input(f"Please enter a password to convert ({type_en}) >>> ")
 
@@ -79,7 +84,7 @@ def encode():
 help_opt = f'''
 _____________________________________________________________
         |
-  -dict  / -d	|  Initiate a dictionary force attack on an any kind of hash
+  -dict   / -d  |  Initiate a dictionary attack on an any kind of hash
   -encode / -e	|  Encodes a password into an any kind of hash
         |
   All hashtypes supported:
