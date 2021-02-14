@@ -25,4 +25,6 @@ Now all you have to do is add it into a list.<br>
     ]
 }
 ```
-If your json has a few errors in it, take it to a json validator online and see what the errors are, with rockyou, I only got about 10 errors, out of 10 million passwords.
+If your json has a few errors in it, take it to a json validator online and see what the errors are.
+
+<strong>I do not recommend going through password lists like ROCKYOU.txt or any others like them since they are way too big</strong>
