@@ -21,7 +21,7 @@ $ python main.py
 
 _____________________________________________________________
         |
-  -dict       / -d  |  Initiate a dictionary attack on an any kind of hash
+  -dict   / -d  |  Initiate a dictionary attack on an any kind of hash
   -encode / -e  |  Encodes a password into an any kind of hash
         |
   All hashtypes supported:
