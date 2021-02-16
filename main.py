@@ -3,7 +3,7 @@ import hashlib
 
 
 def dict_attack():
-    type_att = input("Please enter the type of password hash <\"MD5, SHA256\" > >>> ")
+    type_att = input("Please enter the type of password hash <\"MD5, SHA256\"> >>> ")
     type_att = type_att.upper()
     aloud_pass_types = ['MD5', 'SHA1', 'SHA224', 'SHA384', 'SHA256', 'SHA512']
 
@@ -24,7 +24,7 @@ def dict_attack():
         elif type_att.lower() == 'sha256':
             password_hash = hashlib.sha256(password_b)
         elif type_att.lower() == 'sha224':
-            password_hash = hashlib.sha244(password_b)
+            password_hash = hashlib.sha224(password_b)
         elif type_att.lower() == 'sha384':
             password_hash = hashlib.sha384(password_b)
         elif type_att.lower() == 'sha512':
@@ -36,8 +36,14 @@ def dict_attack():
 
         password = i
         pass_type = type_att
+
         if password_hi in password_s:
-            print(f'{pass_type}({password_hi}) | = | {password}')
+            print(f'''
+Password:
+{pass_type}({password_hi}) | = | {password}''')
+            return True
+        else:
+            return False
 
     if '.json' not in pw_list:
         pw_list = f'{pw_list}.json'
@@ -48,11 +54,14 @@ def dict_attack():
         for i in password_load[list_name]:
             type_att = type_att.lower()
 
-            hash(type_att)
+            if hash(type_att):
+                exit()
+
+        exit('\nPassword was not found')
 
 
 def encode():
-    type_en = input("Please enter the type of password hash <\"MD5, SHA256\" > >>> ")
+    type_en = input("Please enter the type of password hash <\"MD5, SHA256\"> >>> ")
     type_en = type_en.upper()
     aloud_pass_types = ['MD5', 'SHA1', 'SHA224', 'SHA384', 'SHA256', 'SHA512']
 
@@ -69,7 +78,7 @@ def encode():
     elif type_en.lower() == 'sha256':
         password_hash = hashlib.sha256(password_b)
     elif type_en.lower() == 'sha224':
-        password_hash = hashlib.sha244(password_b)
+        password_hash = hashlib.sha224(password_b)
     elif type_en.lower() == 'sha384':
         password_hash = hashlib.sha384(password_b)
     elif type_en.lower() == 'sha512':
