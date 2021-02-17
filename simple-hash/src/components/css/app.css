@@ -1,3 +1,20 @@
+#case {
+  font-size: 10px;
+}
+
+#code-json-txt {
+  background: #383838;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.Warning {
+  position: absolute;
+  padding: .5em;
+  color: red;
+  bottom: .1vw;
+}
+
 .home {
   height: calc(100vh - 3em);
   display: -webkit-box;
@@ -30,6 +47,45 @@
   font-size: 24px;
   color: white;
   text-decoration: none;
+}
+
+.home .m-desc {
+  position: absolute;
+  right: 49em;
+  margin-bottom: 10em;
+  width: 20em;
+  height: 20em;
+  background: rgba(0, 0, 0, 0.144);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.home .m-desc .m-desc-title {
+  position: absolute;
+  text-decoration: underline;
+  height: 1.5;
+  top: -.5em;
+}
+
+.home .m-desc .m-desc-txt {
+  margin-top: 2em;
+}
+
+.home .m-desc .desc-btn {
+  position: absolute;
+  top: 14em;
+  left: .5em;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 1.5em;
 }
 
 .home .cop {
@@ -117,5 +173,35 @@
 .home .cop .cop-res .cop-res-l {
   font-weight: 500;
   text-decoration: underline;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.modal_content {
+  background-color: white;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.close {
+  color: Black;
+  float: right;
+}
+
+.close:hover {
+  color: red;
+  cursor: pointer;
 }
 /*# sourceMappingURL=app.css.map */

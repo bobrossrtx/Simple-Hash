@@ -6,9 +6,10 @@
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 .btn-g {
-  background: #9e9e9e;
+  background: #cfcfcf;
 }
 /*# sourceMappingURL=button.css.map */

@@ -1,0 +1,99 @@
+.download {
+  height: calc(100vh - 3em);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.download .d-load-title {
+  position: absolute;
+  color: whitesmoke;
+  margin-bottom: 80vh;
+}
+
+.download .download-area .download-title1 {
+  position: absolute;
+  color: white;
+  top: 30vh;
+  left: 35vw;
+}
+
+.download .download-area .download-title2 {
+  position: absolute;
+  color: white;
+  top: 30vh;
+  right: 35vw;
+}
+
+.download .download-area .divider {
+  border: solid #707070 3px;
+  height: 40vh;
+}
+
+.download .download-area .diag-divider {
+  position: absolute;
+  border: solid #707070 3px;
+  width: 20vw;
+}
+
+.download .download-area #div1 {
+  left: 29.85vw;
+  border-radius: 5px 0 0 5px;
+}
+
+.download .download-area #div2 {
+  right: 29.85vw;
+  top: 36vh;
+}
+
+.download .download-area .download-btn {
+  position: absolute;
+  background: #8ace24;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: .5em;
+  color: black;
+  text-decoration: none;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.download .download-area .download-btn:hover {
+  background: #4c6d1c;
+  color: white;
+}
+
+.download .download-area #d-btn1 {
+  top: 65vh;
+  left: 33vw;
+}
+
+.download .download-area #d-btn2 {
+  top: 65vh;
+  right: 33vw;
+}
+
+.download .download-area .download-desc {
+  position: absolute;
+  color: white;
+  width: 15vw;
+}
+
+.download .download-area #d-desc1 {
+  top: 35vh;
+  left: 33vw;
+}
+
+.download .download-area #d-desc2 {
+  top: 35vh;
+  right: 33vw;
+}
+/*# sourceMappingURL=download.css.map */

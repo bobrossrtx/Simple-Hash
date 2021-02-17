@@ -5,10 +5,12 @@ import {
 } from "react-router-dom";
 
 import Navbar from './components/navbar/nav';
-import Home from './pages/home'
+import Home from './pages/home';
+import Download from './pages/download';
 
-import './components/css/app.css'
-import './components/css/button.css'
+import './components/css/app.css';
+import './components/css/button.css';
+import './components/css/download.css'
 
 function App() {
   return (
@@ -20,7 +22,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/download">
-            {/* <Download /> */}
+            <Download />
           </Route>
         </Switch>
       </Router>

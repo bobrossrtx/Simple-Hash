@@ -1,0 +1,79 @@
+.download{
+    height: calc(100vh - 3em);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .d-load-title{
+        position: absolute;
+        color: whitesmoke;
+        margin-bottom: 80vh
+    }
+    .download-area{
+        .download-title1{
+            position: absolute;
+            color: white;
+            top: 30vh;
+            left: 35vw;
+        }
+        .download-title2{
+            position: absolute;
+            color: white;
+            top: 30vh;
+            right: 35vw;
+        }
+        .divider{
+            border: solid rgb(112, 112, 112) 3px;
+            height: 40vh
+        }
+        .diag-divider{
+            position: absolute;
+            border: solid rgb(112, 112, 112) 3px;
+            width: 20vw;
+        }
+        #div1{
+            left: 29.85vw;
+            border-radius: 5px 0 0 5px;
+        }
+        #div2{
+            right: 29.85vw;
+            top: 36vh;
+        }
+        .download-btn{
+            position: absolute;
+            background: rgb(138, 206, 36);
+            padding-top: 5px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: .5em;
+            color: black;
+            text-decoration: none;
+            transition: .3s;
+        }
+        .download-btn:hover{
+            background: rgb(76, 109, 28);
+            color: rgb(255, 255, 255);
+        }
+        #d-btn1{
+            top: 65vh;
+            left: 33vw;
+        }
+        #d-btn2{
+            top: 65vh;
+            right: 33vw;
+        }
+        .download-desc{
+            position: absolute;
+            color: white;
+            width: 15vw;
+        }
+        #d-desc1{
+            top: 35vh;
+            left: 33vw;
+        }
+        #d-desc2{
+            top: 35vh;
+            right: 33vw;
+        }
+    }
+}
