@@ -7,8 +7,8 @@ import {
 import Navbar from './components/navbar/nav';
 import Home from './pages/home'
 
-import './components/app.css'
-import './components/button.css'
+import './components/css/app.css'
+import './components/css/button.css'
 
 function App() {
   return (
