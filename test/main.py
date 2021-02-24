@@ -1,8 +1,11 @@
 import json
-import hashlib 
-from itertools import product
-import string
-import os
+import hashlib
+import argparse
+
+parser = argparse.ArgumentParser(description='Simple Hash is a simple password pentesting tool to crack and hash passwords', prog='Simple Hash')
+# parser.add_argument('--dict', type=str, help='Simple dictionary attack')
+parser.add_argument('type_en', nargs='?', help='Choose hash type')
+args = parser.parse_args()
 
 
 def dict_attack():
@@ -63,28 +66,6 @@ Password:
         exit('\nPassword was not found')
 
 
-#######################################
-#                WIP                  #
-#######################################
-
-# def wordlist_gen():
-#     min_len = int(input("Enter min length >>> "))
-#     max_len = int(input("Enter max length >>> "))
-#     counter = 0
-#     characters = string.ascii_lowercase+string.ascii_uppercase+string.digits+string.punctuation
-#     wordlist_file = input("Please enter a path and file name to write your wordlist")
-
-#     file_open = open(wordlist_file, 'w')
-
-#     for i in range(min_len, max_len+1):
-#         for j in product(characters, repeat=1):
-#             word = "".join(j)
-#             file_open.write(word)
-#             file_open.write('\n')
-#             counter += 1
-#     print(f'Wordlist of {counter} passwords created at {os.path.abspath(wordlist_file)}')
-
-
 def hash_tool():
     type_en = input("Please enter the type of password hash <\"MD5, SHA256\"> >>> ")
     type_en = type_en.upper()
@@ -115,30 +96,32 @@ def hash_tool():
     print(f"password: {type_en}({password_s})")
 
 
-help_opt = f'''
-_____________________________________________________________
-        |
-    -dict         / -d    |   Initiate a dictionary attack on an any kind of hash
-    -hash         / -h	  |   hashes a password into an any kind of hash
-    -wordlist     / -w    |   Creates a wordlist (WIP)
-        |
-  Supported HashTypes:
-  MD5, SHA1, SHA224, SHA384, SHA256, SHA512
--------------------------------------------------------------
-'''
-
-print(help_opt)
-
-option = input('[-dict]  [-hash]: ')
-
-invalid = f'{option} is not a valid option.'
+if __name__ == '__main__':
+    hash_tool(args.type_en)
 
 
-if option == '-dict' or option == '-d':
-    dict_attack()
-elif option == '-hash' or option == '-h':
-    hash_tool()
-elif option == '-wordlist' or option == '-w':
-    wordlist_gen()
-else:
-    print(invalid)
+
+# help_opt = f'''
+# _____________________________________________________________
+#         |
+#   -dict   / -d  |  Initiate a dictionary attack on an any kind of hash
+#   -hash   / -H	|  Encodes a password into an any kind of hash
+#         |
+#   All hashtypes supported:
+#   MD5, SHA1, SHA224, SHA384, SHA256, SHA512
+# -------------------------------------------------------------
+# '''
+
+# print(help_opt)
+
+# option = input('[-dict]  [-encode]: ')
+
+# invalid = f'{option} is not a valid option.'
+
+
+# if option == '-dict' or option == '-d':
+#     dict_attack()
+# elif option == '-hash' or option == '-H':
+#     hash_tool()
+# else:
+#     print(invalid)
