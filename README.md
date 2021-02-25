@@ -9,6 +9,30 @@ When using this tool, at the moment there are 2 options,
 - A dictionary attack
 - Password encoding (Hashing)
 
+## Disclaimer
+If you are using the binary executable, you will need to make:
+- Linux users:
+	- Kali / Parrot OS: /usr/share/wordlists/simple-hash/
+	- others: /usr/local/include/simple-hash
+- Windows users:
+	- C:/Users/{YourUser}/.simple-hash/
+
+> E.G.: usr/share/worldists/simple-hash/passwords.json
+
+You can change these locations in the source, and you can use pyinstaller to create the executable.
+
+This tool requires python3
+
+If you don't already have pyinstaller
+```bash
+pip install pyinstaller
+```
+This command will create the executable
+```bash
+pyinstaller shash.py
+```
+You will also have to copy over: ```libpython.3.8.so.1.0``` for it to successfully run
+
 ## dictionary attack
 When it comes to the dictionary attack, You can crack these types of hashes: 
 ```json
