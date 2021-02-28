@@ -11,11 +11,9 @@ When using this tool, at the moment there are 2 options,
 
 ## Disclaimer
 If you are using the binary executable, you will need to make:
-- Linux users:
+- Linux:
 	- Kali / Parrot OS: /usr/share/wordlists/simple-hash/
 	- others: /usr/local/include/simple-hash
-- Windows users:
-	- C:/Users/{YourUser}/.simple-hash/
 
 > E.G.: usr/share/worldists/simple-hash/passwords.json
 
