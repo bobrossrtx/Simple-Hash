@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Simple_Hash"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Simple_Hash">
+				<Option output="/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Simple_Hash" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/10"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/10"/>
+					<Add directory="/usr/include/c++/10/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 Simple_Hash"/>
+					<CompileFile command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Simple_Hash/fast">
+				<Option output="/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Simple_Hash" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/10"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/10"/>
+					<Add directory="/usr/include/c++/10/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 Simple_Hash/fast"/>
+					<CompileFile command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j5 -f &quot;/home/bobrossrtx/Documents/C++/Simple-Hash/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/bobrossrtx/Documents/C++/Simple-Hash/main.cpp">
+			<Option target="Simple_Hash"/>
+		</Unit>
+		<Unit filename="/home/bobrossrtx/Documents/C++/Simple-Hash/md5.cpp">
+			<Option target="Simple_Hash"/>
+		</Unit>
+		<Unit filename="/home/bobrossrtx/Documents/C++/Simple-Hash/md5.h">
+			<Option target="Simple_Hash"/>
+		</Unit>
+		<Unit filename="/home/bobrossrtx/Documents/C++/Simple-Hash/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

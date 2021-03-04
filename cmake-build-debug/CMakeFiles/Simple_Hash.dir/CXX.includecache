@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/bobrossrtx/Documents/C++/Simple-Hash/md5.cpp
+md5.h
+/home/bobrossrtx/Documents/C++/Simple-Hash/md5.h
+cstdio
+-
+
+/home/bobrossrtx/Documents/C++/Simple-Hash/md5.h
+cstring
+-
+iostream
+-
+
