@@ -11,8 +11,13 @@ void showHelp();
 
 int main(int argc, char *argv[])
 {
-    vector<string> words;
-    vector<string> hashed_word;
+    vector<string>  words;
+    vector<string>  hashed_word;
+    vector<string>  fails;
+    bool cracked;
+
+    cout << fails.size();
+
     if (argc == 1)
     {
         showHelp();
@@ -53,8 +58,7 @@ int main(int argc, char *argv[])
             {
                 i++;
 
-                if (i >= argc)
-                {
+                if (i >= argc) {
                     cout << "E: An argument was expected for " << argv[i - 1];
                     return 0;
                 }
@@ -64,26 +68,31 @@ int main(int argc, char *argv[])
 
                 transform(args_lower.begin(), args_lower.end(), args_lower.begin(), ::tolower);
 
-                if (args_lower == "md5")
-                {
-                    for (int e = 0; e < words.size(); e++)
-                    {
+                if (args_lower == "md5") {
+                    for (int e = 0; e < words.size(); e++) {
                         hashed_word.push_back(md5(words[e]));
                     }
                 }
             }
-            else if (str_args == "-h")
-            {
+            else if (str_args == "-h") {
                 i++;
 
                 string hash = argv[i];
 
-                for (int d = 0; d < words.size(); d++)
-                {
-                    if (hashed_word[d] == hash)
-                    {
-                        cout << words[d];
+                cout << "Failed password count: " << fails.size() << endl;
+
+                for (int d = 0; d < words.size(); d++) {
+                    if (hash != hashed_word[d]) {
+                        fails.push_back(words[d - 1]);
+                    } else {
+                        cout << hash << " : [ ==== ] : " << words[d];
+                        cracked = true;
+                        break;
                     }
+                }
+                
+                if (cracked != true) {
+                    cout << "Failed to find password within provided list." << endl;
                 }
             }
             else if (str_args == "--help")
