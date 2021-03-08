@@ -4,6 +4,7 @@
 #include <bits/stdc++.h>
 
 #include "md5.h"
+#include "sha256.h"
 
 using namespace std;
 
@@ -15,8 +16,6 @@ int main(int argc, char *argv[])
     vector<string>  hashed_word;
     vector<string>  fails;
     bool cracked;
-
-    cout << fails.size();
 
     if (argc == 1)
     {
@@ -72,6 +71,10 @@ int main(int argc, char *argv[])
                     for (int e = 0; e < words.size(); e++) {
                         hashed_word.push_back(md5(words[e]));
                     }
+                } else if (args_lower == "sha256") {
+                    for (int e = 0; e < words.size(); e++) {
+                        hashed_word.push_back(sha256(words[e]));
+                    }
                 }
             }
             else if (str_args == "-h") {
@@ -79,19 +82,17 @@ int main(int argc, char *argv[])
 
                 string hash = argv[i];
 
-                cout << "Failed password count: " << fails.size() << endl;
-
                 for (int d = 0; d < words.size(); d++) {
-                    if (hash != hashed_word[d]) {
-                        fails.push_back(words[d - 1]);
-                    } else {
-                        cout << hash << " : [ ==== ] : " << words[d];
-                        cracked = true;
-                        break;
-                    }
-                }
-                
-                if (cracked != true) {
+		    if (hash == hashed_word[d]) {
+                cout << "Failed password count: " << fails.size() << "\n";
+                cout << hash << " : [ =!=!=!= ] : " << words[d];
+                cracked = true;
+			    break;
+		    } else {
+			    fails.push_back(words[d - 1]);
+		    }
+		}
+                if (fails.size() == words.size()) {
                     cout << "Failed to find password within provided list." << endl;
                 }
             }
@@ -109,21 +110,34 @@ int main(int argc, char *argv[])
 
 void showHelp()
 {
-    cout << "Simple Hash\n"
+    cout << R"(
+     /$$$$$$  /$$                         /$$                 /$$   /$$                     /$$      
+    /$$__  $$|__/                        | $$                | $$  | $$                    | $$      
+    |$$  \__/ /$$ /$$$$$$/$$$$   /$$$$$$ | $$  /$$$$$$       | $$  | $$  /$$$$$$   /$$$$$$$| $$$$$$$ 
+    | $$$$$$ | $$| $$_  $$_  $$ /$$__  $$| $$ /$$__  $$      | $$$$$$$$ |____  $$ /$$_____/| $$__  $$
+    \____  $$| $$| $$ \ $$ \ $$| $$  \ $$| $$| $$$$$$$$      | $$__  $$  /$$$$$$$|  $$$$$$ | $$  \ $$
+    /$$  \ $$| $$| $$ | $$ | $$| $$  | $$| $$| $$_____/      | $$  | $$ /$$__  $$ \____  $$| $$  | $$
+    | $$$$$$/| $$| $$ | $$ | $$| $$$$$$$/| $$|  $$$$$$$      | $$  | $$|  $$$$$$$ /$$$$$$$/| $$  | $$
+    \______/ |__/|__/ |__/ |__/| $$____/ |__/ \_______/      |__/  |__/ \_______/|_______/ |__/  |__/
+                               | $$                                                                  
+                               | $$                                                                  
+                               |__/                                                                  
+
+    )"
          << endl
          << "----Help:-----------------------------"
          << endl
-         << "-h   |   Open Help menu\n"
-            "     |   usage: shash -h"
+         << "--help |   Open Help menu\n"
+            "       |   usage: shash -h"
          << endl
          << "--------------------------------------"
          << endl
-         << "-wL  |   Enter wordlist location\n"
-            "     |   usage: shash -wL <filename>"
+         << "-wL    |   Enter wordlist location\n"
+            "       |   usage: shash -wL <filename>"
          << endl
          << "--------------------------------------"
          << endl
-         << "-m   |   Enter mode\n"
-            "     |   usage: shash -m <mode>"
+         << "-m     |   Enter mode\n"
+            "       |   usage: shash -m <mode>"
          << endl;
 }
