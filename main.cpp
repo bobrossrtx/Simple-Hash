@@ -2,61 +2,59 @@
 #include <fstream>
 #include <string>
 #include <bits/stdc++.h>
+#include <thread>
 
 #include "md5.h"
 #include "sha256.h"
 
 using namespace std;
 
+vector<string>  words;
+vector<string>  hashedWord;
+
 void showHelp();
 
-int main(int argc, char *argv[])
-{
-    vector<string>  words;
-    vector<string>  hashed_word;
+void hashThread(string args) {
+    if (args == "md5") {
+        for (int e = 0; e < words.size(); e++)
+            hashedWord.push_back(md5(words[e]));
+    }
+    else if (args == "sha256") {
+        for (int e = 0; e < words.size(); e++)
+            hashedWord.push_back(sha256(words[e]));
+    };
+}
+
+int main(int argc, char *argv[]) {
     vector<string>  fails;
     bool cracked;
 
-    if (argc == 1)
-    {
+    if (argc == 1) {
         showHelp();
     }
-    else
-    {
-        for (int i = 1; i < argc; i++)
-        {
+    else {
+        for (int i = 1; i < argc; i++) {
             string str_args = string(argv[i]);
-            if (str_args == "-wL")
-            {
+            if (str_args == "-wL") {
                 i++;
-
-                if (i >= argc)
-                {
+                if (i >= argc) {
                     cout << "E: An argument was expected for " << argv[i - 1];
                     return 0;
                 }
 
                 fstream file;
                 file.open(argv[i], ios::in);
-                if (file.is_open())
-                {
+                if (file.is_open()) {
                     string word;
-
                     while (file >> word)
-                    {
                         words.push_back(word);
-                    }
-                }
-                else
-                {
+                } else {
                     cout << "E: File / Directory " << argv[i] << " Does not exist";
                     return 0;
                 }
             }
-            else if (str_args == "-m")
-            {
+            else if (str_args == "-hT") {
                 i++;
-
                 if (i >= argc) {
                     cout << "E: An argument was expected for " << argv[i - 1];
                     return 0;
@@ -64,52 +62,47 @@ int main(int argc, char *argv[])
 
                 string str_args_mode = string(argv[i]);
                 string args_lower = string(argv[i]);
+                transform(args_lower.begin(),
+                        args_lower.end(), 
+                        args_lower.begin(), 
+                        ::tolower);
+                        
+                // TODO: Multi Thread hashing of words within
+                // the selected wordlist
 
-                transform(args_lower.begin(), args_lower.end(), args_lower.begin(), ::tolower);
-
-                if (args_lower == "md5") {
-                    for (int e = 0; e < words.size(); e++) {
-                        hashed_word.push_back(md5(words[e]));
-                    }
-                } else if (args_lower == "sha256") {
-                    for (int e = 0; e < words.size(); e++) {
-                        hashed_word.push_back(sha256(words[e]));
-                    }
-                }
+                thread hashThreadMethod(hashThread, args_lower);
+                hashThreadMethod.join();
             }
             else if (str_args == "-h") {
                 i++;
-
                 string hash = argv[i];
+                for (int d = 0; d < words.size(); d++) { 
+                    if (hash == hashedWord[d]) {
+                        cout << "Failed password count: " << fails.size() - 1 << "\n";
+                        cout << hash << " : [ =!=!=!= ] : " << words[d];
+                        cracked = true;
 
-                for (int d = 0; d < words.size(); d++) {
-		    if (hash == hashed_word[d]) {
-                cout << "Failed password count: " << fails.size() << "\n";
-                cout << hash << " : [ =!=!=!= ] : " << words[d];
-                cracked = true;
-			    break;
-		    } else {
-			    fails.push_back(words[d - 1]);
-		    }
-		}
-                if (fails.size() == words.size()) {
+                        // TODO: If cracked == true: terminate hash thread
+                        break;
+                    } else {
+                        fails.push_back(words[d]);
+                    }
+		        }
+                if (fails.size() == words.size())
                     cout << "Failed to find password within provided list." << endl;
-                }
             }
-            else if (str_args == "--help")
-            {
+            else if (str_args == "--help"){
                 showHelp();
             }
-            else
-            {
+            else {
                 cout << "Invalid argument: " << argv[i];
             }
         }
     }
 }
 
-void showHelp()
-{
+
+void showHelp() {
     cout << R"(
      /$$$$$$  /$$                         /$$                 /$$   /$$                     /$$      
     /$$__  $$|__/                        | $$                | $$  | $$                    | $$      
@@ -134,6 +127,11 @@ void showHelp()
          << endl
          << "-wL    |   Enter wordlist location\n"
             "       |   usage: shash -wL <filename>"
+         << endl
+         << "--------------------------------------"
+         << endl
+         << "-hT    |   Select hash type\n"
+            "       |   usage: shash -hT <hash type>"
          << endl
          << "--------------------------------------"
          << endl
