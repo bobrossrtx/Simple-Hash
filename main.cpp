@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <thread>
+#include <vector>
 #include <mutex>
 
 #include "md5.h"
@@ -13,42 +14,45 @@ using namespace std;
 vector<string>  words;
 vector<string>  hashedWord;
 
-mutex mtx;
-bool dictComp = false;
-bool stophashThread = false;
-int hashPWSize = 0;
+mutex hashMtx;
+bool hashThreadComp = false;
+bool stopHashThread = false;
+int tSize = 0;
 
 void showHelp();
 
 void hashThread(string args) {
     if (args == "md5") {
         for (int e = 0; e < words.size(); e++) {
-            mtx.lock();
+            hashMtx.lock();
             hashedWord.push_back(md5(words[e]));
-            hashPWSize++;
-            if (stophashThread) {
-                mtx.unlock();
+            tSize++;
+            if (stopHashThread) {
+                hashMtx.unlock();                   
                 return;
-            } mtx.unlock();
+            }
+            hashMtx.unlock(); 
         }
-    } else if (args == "sha256") {
+    }
+    else if (args == "sha256") {
         for (int e = 0; e < words.size(); e++) {
-            mtx.lock();
+            hashMtx.lock();
             hashedWord.push_back(sha256(words[e]));
-            hashPWSize++;
-            if (stophashThread) {
-                mtx.unlock();
+            tSize++;
+            if (stopHashThread) {
+                hashMtx.unlock();
                 return;
-            } mtx.unlock();
+            }
+            hashMtx.unlock();
         }
     };
-    mtx.lock();
-    dictComp = true;
-    mtx.unlock();
-
+    hashMtx.lock();
+    hashThreadComp = true;
+    hashMtx.unlock();
 }
 
-int main(int argc, char *argv[]) {
+
+int main(int argc, char* argv[]) {
     vector<string>  fails;
     bool cracked;
 
@@ -62,7 +66,7 @@ int main(int argc, char *argv[]) {
             if (str_args == "-wL") {
                 i++;
                 if (i >= argc) {
-                    cout << "E: An argument was expected for " << argv[i - 1];
+                    cout << "E: An argument was expected for " << argv[i - 1] << endl;
                     return 0;
                 }
 
@@ -72,15 +76,15 @@ int main(int argc, char *argv[]) {
                     string word;
                     while (file >> word)
                         words.push_back(word);
-                } else {
-                    cout << "E: File / Directory " << argv[i] << " Does not exist";
+                }
+                else {
+                    cout << "E: File / Directory " << argv[i] << " Does not exist" << endl;
                     return 0;
                 }
-            }
-            else if (str_args == "-hT") {
+            } else if (str_args == "-hT") {
                 i++;
                 if (i >= argc) {
-                    cout << "E: An argument was expected for " << argv[i - 1];
+                    cout << "E: An argument was expected for " << argv[i - 1] << endl;
                     return 0;
                 }
 
@@ -90,37 +94,40 @@ int main(int argc, char *argv[]) {
                         args_lower.end(), 
                         args_lower.begin(), 
                         ::tolower);
-                        
+
                 hashThreadMethod = thread(hashThread, args_lower);
             }
             else if (str_args == "-h") {
                 i++;
                 string hash = argv[i];
                 int denominator = 0;
-                while (!dictComp && denominator == words.size()) {
-                    // https://codeshare.io/2KVmOM
+                while (!hashThreadComp && denominator != words.size()) {
+                    if (denominator + 1 <= hashedWord.size()) {
+                        if (hash == hashedWord[denominator]) {
+                            stopHashThread = true;
+                            hashThreadMethod.join();   
+
+                            cout << "Failed password count: " << fails.size() << endl;
+                            cout << hash << " : [ =!=!=!= ] : " << words[denominator] << endl;
+                            cracked = true;
+
+                            break;
+                        } else {
+                            fails.push_back(words[denominator]);
+                        } denominator++;
+                    }
                 }
 
-                // for (int d = 0; d < words.size(); d++) { 
-                //     if (hash == hashedWord[d]) {
-                //         cout << "Failed password count: " << fails.size() - 1 << "\n";
-                //         cout << hash << " : [ =!=!=!= ] : " << words[d];
-                //         cracked = true;
-
-                //         // TODO: If cracked == true: terminate hash thread
-                //         break;
-                //     } else {
-                //         fails.push_back(words[d]);
-                //     }
-		        // }
-                if (fails.size() == words.size())
+                if (fails.size() == words.size()) {
                     cout << "Failed to find password within provided list." << endl;
+                    stopHashThread = true;
+                    hashThreadMethod.join();
+                }
             }
-            else if (str_args == "--help"){
+            else if (str_args == "--help") {
                 showHelp();
-            }
-            else {
-                cout << "Invalid argument: " << argv[i];
+            } else {
+                cout << "Invalid argument: " << argv[i] << endl;
             }
         }
     }
@@ -142,25 +149,25 @@ void showHelp() {
                                |__/                                                                  
 
     )"
-         << endl
-         << "----Help:-----------------------------"
-         << endl
-         << "--help |   Open Help menu\n"
-            "       |   usage: shash -h"
-         << endl
-         << "--------------------------------------"
-         << endl
-         << "-wL    |   Enter wordlist location\n"
-            "       |   usage: shash -wL <filename>"
-         << endl
-         << "--------------------------------------"
-         << endl
-         << "-hT    |   Select hash type\n"
-            "       |   usage: shash -hT <hash type>"
-         << endl
-         << "--------------------------------------"
-         << endl
-         << "-m     |   Enter mode\n"
-            "       |   usage: shash -m <mode>"
-         << endl;
+        << endl
+        << "----Help:-----------------------------"
+        << endl
+        << "--help |   Open Help menu\n"
+        "       |   usage: shash -h"
+        << endl
+        << "--------------------------------------"
+        << endl
+        << "-wL    |   Enter wordlist location\n"
+        "       |   usage: shash -wL <filename>"
+        << endl
+        << "--------------------------------------"
+        << endl
+        << "-hT    |   Select hash type\n"
+        "       |   usage: shash -hT <hash type>"
+        << endl
+        << "--------------------------------------"
+        << endl
+        << "-m     |   Enter mode\n"
+        "       |   usage: shash -m <mode>"
+        << endl;
 }
