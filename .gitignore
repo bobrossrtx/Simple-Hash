@@ -1,3 +1,9 @@
 /tests
 /.idea
 /.vscode
+/.vscode
+rockyou.txt
+*cache*
+*CMake*
+/CMakeFiles/
+/cmake-build-debug/
