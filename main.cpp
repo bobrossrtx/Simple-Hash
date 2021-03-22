@@ -33,8 +33,7 @@ void hashThread(string args) {
             }
             hashMtx.unlock(); 
         }
-    }
-    else if (args == "sha256") {
+    } else if (args == "sha256") {
         for (int e = 0; e < words.size(); e++) {
             hashMtx.lock();
             hashedWord.push_back(sha256(words[e]));
@@ -58,8 +57,7 @@ int main(int argc, char* argv[]) {
 
     if (argc == 1) {
         showHelp();
-    }
-    else {
+    } else {
         thread hashThreadMethod;
         for (int i = 1; i < argc; i++) {
             string str_args = string(argv[i]);
@@ -76,8 +74,7 @@ int main(int argc, char* argv[]) {
                     string word;
                     while (file >> word)
                         words.push_back(word);
-                }
-                else {
+                } else {
                     cout << "E: File / Directory " << argv[i] << " Does not exist" << endl;
                     return 0;
                 }
@@ -96,8 +93,7 @@ int main(int argc, char* argv[]) {
                         ::tolower);
 
                 hashThreadMethod = thread(hashThread, args_lower);
-            }
-            else if (str_args == "-h") {
+            } else if (str_args == "-h") {
                 i++;
                 string hash = argv[i];
                 int denominator = 0;
@@ -117,14 +113,12 @@ int main(int argc, char* argv[]) {
                         } denominator++;
                     }
                 }
-
                 if (fails.size() == words.size()) {
                     cout << "Failed to find password within provided list." << endl;
                     stopHashThread = true;
                     hashThreadMethod.join();
                 }
-            }
-            else if (str_args == "--help") {
+            } else if (str_args == "--help") {
                 showHelp();
             } else {
                 cout << "Invalid argument: " << argv[i] << endl;
